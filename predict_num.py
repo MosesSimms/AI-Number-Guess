@@ -6,7 +6,11 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Loading the network and model
 network = NeuralNetwork()
-network.load_state_dict(torch.load("models/model.pth"))
+
+if torch.cuda.is_available():
+    network.load_state_dict(torch.load("models/model.pth"))
+else:
+    network.load_state_dict(torch.load("models/model.pth", map_location=torch.device("cpu")))
 
 # Sets the network to evaluation mode
 network.eval()
