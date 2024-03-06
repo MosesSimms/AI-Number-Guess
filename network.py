@@ -10,6 +10,7 @@ from data import *
 # Setting GPU as Device if NVIDIA GPU found
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu') 
 
+# Network Class
 class NeuralNetwork(nn.Module):
 	def __init__(self):
 		super(NeuralNetwork, self).__init__()
@@ -23,6 +24,9 @@ class NeuralNetwork(nn.Module):
 		)
 
 	def forward(self, x: Tensor):
+
+		# Was having issues with flatten when running without batch size
+		# Checks if tensor shape doesnt have batch and changes flatten start and end params
 		if len(x.shape) == 2:
 			flatten = nn.Flatten(0, -1)
 			x = flatten(x)
@@ -39,8 +43,8 @@ class NeuralNetwork(nn.Module):
 	# Importing Training Data
 train_image_data = torchvision.transforms.functional.to_tensor(np.array(train_images).T).to(device)
 train_labels_data = torch.tensor(train_labels).to(device)
+# Images from dataset weren't orientated correctly
 train_image_data = torch.rot90(train_image_data)
-
 train_image_data = train_image_data.permute(1, 2, 0)
 
 
@@ -61,13 +65,17 @@ test_ds_loader = data_utils.DataLoader(test_ds, batch_size=16, shuffle=True)
 
 if __name__ == "__main__":
 
+	# Honestly I wrote the network awhile ago and I dont remember the use of this line
+	# Oh nvm I think its just loading the next Image and Label set from the data
 	train_features, train_labels = next(iter(train_ds_loader))
 
-
-	# Creating NeuralNetwork
+	# Creating Network model
 	model = NeuralNetwork().to(device)
 
 	# Training Network
+
+	# Was able to get 97% accuracy with these parameters on images from the dataset
+	# Not sure of exact accuracy on User drawn images
 	learning_rate = 1e-2
 	batch_size = 16
 
