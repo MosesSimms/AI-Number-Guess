@@ -43,7 +43,7 @@ class NeuralNetwork(nn.Module):
 	# Importing Training Data
 train_image_data = torchvision.transforms.functional.to_tensor(np.array(train_images).T).to(device)
 train_labels_data = torch.tensor(train_labels).to(device)
-# Images from dataset weren't orientated correctly
+	# Images from dataset weren't orientated correctly
 train_image_data = torch.rot90(train_image_data)
 train_image_data = train_image_data.permute(1, 2, 0)
 
@@ -65,8 +65,8 @@ test_ds_loader = data_utils.DataLoader(test_ds, batch_size=16, shuffle=True)
 
 if __name__ == "__main__":
 
-	# Honestly I wrote the network awhile ago and I dont remember the use of this line
-	# Oh nvm I think its just loading the next Image and Label set from the data
+	# Honestly I wrote the network awhile ago following the Pytorch docs and I dont remember the use of this line
+	# I think its just loading the next Image and Label set from the data
 	train_features, train_labels = next(iter(train_ds_loader))
 
 	# Creating Network model
