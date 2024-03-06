@@ -21,6 +21,10 @@ begin_texture_mode(target)
 clear_background(BLACK)
 end_texture_mode()
 
+print("\n\n")
+print("'ENTER': Captures Drawing And Returns Computer Guess")
+print("'C': Clears Drawing Canvas")
+
 while not window_should_close():
 
     mousePosition = get_mouse_position()
