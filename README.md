@@ -19,7 +19,7 @@ The computer still struggles sometimes with 8's, 4's, and some other number I ca
 
 3. I don't like having to save the canvas as an image into the directory for process, 
 but due to the way the python version of raylib works I didn't see another option.
-raylib saves the texture image as a C structure, which pillow isnt able to work with.
+Raylib returns the texture image as a C structure, which pillow isnt able to work with.
 Therefore I have to export the image first and then open with pillow.
 
 4. Other things that I don't remember
