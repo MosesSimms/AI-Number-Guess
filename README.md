@@ -53,3 +53,6 @@ Make sure when altering Batch Size to also change the Batch Size parameter of th
 * Find A Better Solution For The Images
 * Perhaps Improve Accuracy
 * Compile As Executible
+
+# Example Screenshots
+<img src="https://raw.githubusercontent.com/MosesSimms/AI-Number-Guess/main/examples/window.png" width=256 height=256 alt="Example Screenshot"> <img src="https://raw.githubusercontent.com/MosesSimms/AI-Number-Guess/main/examples/terminal.png" width=400 height=256 alt="Example Screenshot">
